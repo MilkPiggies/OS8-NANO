@@ -93,6 +93,7 @@ main:
     mov si, msg_hello
     call puts
 
+    cli                         ; disable interrupts, this way we can't get out of "halt" state
     hlt
 
 
