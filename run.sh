@@ -1,1 +1,1 @@
-qemu-system-1386 -fda build_floppy.img
+qemu-system-i386 -fda build/main_floppy.img
