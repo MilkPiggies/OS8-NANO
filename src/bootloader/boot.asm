@@ -199,11 +199,11 @@ disk_read:
 .done:
     popa
 
-    push di                             
-    push dx
-    push cx
-    push bx
-    push ax                                 ; restore registers modified
+    pop di                             
+    pop dx
+    pop cx
+    pop bx
+    pop ax                                 ; restore registers modified
     ret
 
 
