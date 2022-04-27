@@ -1,0 +1,1 @@
+qemu-system-1386 -fda build_floppy.img
