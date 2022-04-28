@@ -88,7 +88,7 @@ bool readRootDirectory(FILE* disk)
     return readSectors(disk, lba, sectors, g_RootDirectory);
 }
 
-DirectoryEntry* readFile(const char* name)
+DirectoryEntry* findFile(const char* name)
 {
     for (uint32_t i = 0; i < g_BootSector.DirEntryCount; i++)
     {
@@ -113,21 +113,29 @@ int main(int argc, char** argv)
     }
 
     if (!readBootSector(disk)) {
-        fprintf(stderr, "Coult not read boot sector!\n");
+        fprintf(stderr, "Cannot read boot sector!\n");
         return -2;
     }
 
     if (!readFat(disk)) {
-        fprintf(stderr, "Coult not read FAT!\n");
+        fprintf(stderr, "Cannot read FAT!\n");
         free(g_Fat);
         return -3;
     }
 
     if (!readRootDirectory(disk)) {
-        fprintf(stderr, "Coult not read FAT!\n");
+        fprintf(stderr, "Cannot read FAT!\n");
         free(g_Fat);
         free(g_RootDirectory);
         return -4;
+    }
+
+    DirectoryEntry* fileEntry = findFile()
+    if (!fileEntry) {
+        fprintf(stderr, "Cannot find file %s!\n", argv[2]);
+        free(g_Fat);
+        free(g_RootDirectory);
+        return -5;
     }
 
     free(g_Fat);
