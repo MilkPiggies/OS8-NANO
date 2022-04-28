@@ -1,0 +1,90 @@
+Boot jump instruction                                   EB 3C 90
+Oem identifier                  MSWIN4.1                4D 53 57 49 4E 34 2E 31
+Bytes per sector                512                     00 02
+Sectors per cluster             1                       02  
+Reserved sectors                1                       01 00
+Fat count                       2                       02
+Dir entry count                 224                     E0 00
+Total sectors                   2880                    40 0B
+Media descriptor type                                   F0
+Sectors per fat                 9                       09 00
+Sectors per track               18                      12 00
+Heads                           2                       02 00
+Hidden sectors                  0                       00 00 00 00 
+Large sector count              0                       00 00 00 00
+
+// extended boot record
+Drive number                                            00
+(reserved)                                              00
+Signature                                               29
+Volume id                                               12 34 56 78
+Volume label                    NANOBYTE 0S             4E 41 4E 4F 42 59 54 45 20 4F 53                
+System id                       FAT12                   46 41 54 31 32 20 20 20
+
+
+RESERVED = [ Reserved sectors ] = 1
+FILE_ALLOCATION_TABLES = [ Fat count * Sectors per fat ] = 18
+ROOT_DIRECTORY = [ (Dir entry count * 32 + Bytes per sector - 1) / Bytes per sector ] = 14
+
+
+###########################################################################################
+#                                                                                         #
+#                                      EXAMPLE                                            #
+#                                                                                         #
+############################################################################################
+
+                                    The root directory
+
+File name   Attr.  Res. Creation  Creation  Creation   Access   First    Modified  Modified  First    Size
+                        Time1/10s Time      Date       Date     Clst hi  Time      Date      Clst lo
+NBOS        08     00   00        CC B9     38 52      38 52    00 00    CC B9     38 52     00 00    00 00 00 00
+KERNEL BIN  20     18   00        CC B9     38 52      38 52    00 00    CC B9     38 52     02 00    37 00 00 00
+TEST   TXT  20     18   00        76 00     3D 52      3D 52    00 00    76 00     3D 52     03 00    3F 1E 00 00
+<empty>     00     00   00        00 00     00 00      00 00    00 00    00 00     00 00     00 00    00 00 00 00
+
+
+All we need is the File name, First Cluster (high) and First Cluster (low)
+
+
+File name       First Cluster (high)    First Cluster (low)     Size
+
+NBOS            0                       0                       0
+KERNEL  BIN     0                       2                       55
+TEST    TXT     0                       3                       7743
+<empty>
+
+
+########## Reading Clusters: ##########
+lba = data_region_begin + (cluster -2) * sectors_per_cluster
+35  =      1+18+14              3                 2
+
+
+
+The File Allocation Table 
+F0 FF FF FF 4F 00 05 60 00 07 80 00 09 A0 00 0B
+C0 00 0D E0 00 0F 00 01 11 20 01 FF 0F 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+                       =                        **FAT12 - each entry has 12 bits**
+
+         0   1   2   3   4   5   6   7   8   9
+    0   FF0 FFF FFF 004 005 006 007 008 009 00A
+    10  00B 00C 00D 00E 00F 010 011 012 FFF 000
+    20  000 000 000
+
+    FAT will stop after FF8 is reached (end of hex)
+    End of chain = end of file
+
+
+
+########## Reading Files From directory: ##########
+1. Split path into component parts (and convert to FAT file naming scheme).
+         Foo\Bar\hello.txt   =>  "FOO    ", "BAR     ", "HELLO   TXT"
+
+2. Read first directory from root directory, using same procedure as reading 
+   files. Directories have the same structure as the root directory, and can be 
+   read just like an ordinary file.
+
+3. Search the next component from the path in the directory, and read it.
+
+4. Repeat until reaching and reading the file.
