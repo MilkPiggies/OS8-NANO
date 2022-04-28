@@ -41,7 +41,7 @@ BootSector g_BootSector;
 
 bool readBootSector(FILE* disk)
 {
-    return fread(&g_bootSector, sizeof(g_BootSector), 1, disk);
+    return fread(&g_BootSector, sizeof(g_BootSector), 1, disk);
 }
 
 bool readSectors(FILE* disk, uint32_t lba, uint32_t count, void* bufferOut)
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 
     if (!readBootSector(disk)) {
         fprintf(stderr, "Coult not read boot sector!\n");
-        reeturn -2;
+        return -2;
     }
 
     return 0;
