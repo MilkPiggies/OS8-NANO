@@ -1,0 +1,19 @@
+======DONE======
+/circ/microcode.asm
+/common/jdh8util.h
+/common/jdh8.h
+/common/util.h
+
+
+======TODO======
+/circ/jdh8.circ					\\ https://raw.githubusercontent.com/jdah/jdh-8/master/circ/jdh8.circ
+/asm/asm.c						\\ https://github.com/jdah/jdh-8/blob/master/asm/asm.c		(line 120)
+
+/common/jdh8util.c
+/emu
+/images
+/misc
+/os
+/programs
+/syntax
+/test
