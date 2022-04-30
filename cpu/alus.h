@@ -86,15 +86,44 @@ g4 = 0x19
 
 // ALU Multiplication
 	// ALU A
-	
+		e2 = 0x01 - 0x02 {
+			for (i = 0x01; i <= 10; i = 0x02 * 1)
+			{
+				printf(" %d \t 0xe3 \n", i);
+			}
+
 	// ALU B
-	
+		f1 = 0x03 - 0x04 {
+			for (i = 0x03; i <= 10; i = 0x04 * 1)
+			{
+				printf(" %d \t 0xf3 \n", i);
+			}
+
 	// ALU C
-	 
+		g1 = 0x05 - 0x06 {
+			for (i = 0x05; i <= 10; i = 0x06 * 1)
+			{
+				printf(" %d \t 0xg3 \n", i);
+			}
 	 
 // ALU Division
 	// ALU A
+		e2 = 0x01 - 0x02 {
+			for (i = 0x01; i <= 10; i = 0x02 * 1)
+			{
+				printf(" %d \t 0xe3 \n", i);
+			}
 
 	// ALU B
+		f1 = 0x03 - 0x04 {
+			for (i = 0x03; i <= 10; i = 0x04 * 1)
+			{
+				printf(" %d \t 0xf3 \n", i);
+			}
 
 	// ALU C
+		g1 = 0x05 - 0x06 {
+			for (i = 0x05; i <= 10; i = 0x06 * 1)
+			{
+				printf(" %d \t 0xg3 \n", i);
+			}
