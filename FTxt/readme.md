@@ -168,5 +168,30 @@ Another example:
 
 - PRNT   = prints the content of desired reg/alu/mem to bus or desired location --- ( arguments: <from> <to> ) ex: PRNT REG_A BUS     ( if <to> is empty, will default to display )
 - RUN    = runs the code in selected memory bank ---------------------------------- ( arguments: <from>      ) ex: RUN MEM_1          
-- DECO   = decodes file/address to desired language ------------------------------- ( arguments: <file/addr> <bin/hex/dec> )          
+- DECO   = decodes file/address to desired language ------------------------------- ( arguments: <file/addr> <bin/hex/dec> )           
 - RECO   = recodes file/address from desired language to desired language --------- ( arguments: <file/addr> <bin/hex/dec> )
+- LOAD   = loads the desired file to memory --------------------------------------- ( arguments: <file> <to> ) 
+====================================================================================
+
+
+
+
+Using memory and registers:
+    Since both are stored in text files, acessing is quite easy. The only difference is registers are generally a max of 64bit, in our case reg_a, reg_b, reg_c and reg_d are 8bit.
+    For an example to read whats on reg_a, we can run [ LOAD REG_A MEM_A ]. This will load the value of reg_a onto mem_1. We can use extra arguments if we only want to read a part of the value; if we only want the 5th bit out of the 8 stored on reg_a we can do [ LOAD REG_A SEL x05 x05] The select flag(SEL) will tell load to only from the 5th bit to thr 5th bit. therefore only reading the 5th bit. We can also specify to = x06 to get the 5th bit and 6th. This would result in having only those two bits in the output.
+
+    For memory it is a little different. Here we have more data to choose from, as seen above (112) the memory file (mem_a) can have multiple languages on it, each separated in columns and rows. this is the same for each possible memory language ( HEX/BIN/DEC ), in this example we will use binary as the stored data. this way we wont have to decode from hexidecimal. Lets say we have already loaded a data into mem_a:
+
+
+           00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+           01010011 01000101 01010100 00100000 01010010 01000101 01000111 01011111 01000001 00100000 00110000 00110000 00110000 00110000 00110000 00110000 00110001 00110000 00100000 01111100 00100000 01010011 01000101 01010100 00100000 01010010 01000101 01000111 01011111 01000010 00100000 00110000 00110000 00110000 00110000 00110000 00110000 00110001 00110000 00100000 01111100 00100000 01010000 01010010 01001110 01010100 00100000 01000001 01001100 01010101 01011111 01000001 00100000 01000010 01010101 01010011 00100000 01111100 00100000 01010000 01010010 01001110 01010100 00100000 01000010 01010101 01010011 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+
+            This program will simply display 2+2 = 4 to bus, then print bus to display.
+                - set reg_a to 2 
+                - set reg_b to 2
+                - prnt alu_a bus
+                - prnt bus
+
+            The problem here is out program is surrounded by 00000000's again. As before we just tell LOAD where to start and end.:
+                                    LOAD MEM_-START Cx02 Rx01 -END Cx10 Rx05
+====================================================================================
