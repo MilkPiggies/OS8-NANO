@@ -164,7 +164,7 @@ Another example:
 
 - CLR    = sets desired reg/alu/mem to 0000 0000 ---------------------------------- ( 0 )
 - SET    = sets a register to desired number ----------------------------------------------------------------- ex: SET REG_A 00001111
-- MOV    = moves one reg/alu/mem to another reg/alu/mem --------------------------- ( arguments: <device> <from> <to> ) ex: MOV REG_A REG_B    ( both arguments must be filled exept   for <device>, it is to be used if moving from a disk )
+- MOV    = moves one reg/alu/mem to another reg/alu/mem --------------------------- ( arguments: <device> <from> <to> ) ex: MOV REG_A REG_B                                           ( both arguments must be filled exept   for <device>, it is to be used if moving from a disk )
 
 - PRNT   = prints the content of desired reg/alu/mem to bus or desired location --- ( arguments: <from> <to> ) ex: PRNT REG_A BUS     ( if <to> is empty, will default to display )
 - RUN    = runs the code in selected memory bank ---------------------------------- ( arguments: <from>      ) ex: RUN MEM_1          
