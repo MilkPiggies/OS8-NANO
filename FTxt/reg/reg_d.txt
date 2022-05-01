@@ -1,0 +1,12 @@
+// content of reg a below   //
+// by default content is 0  //
+
+// formatted as " # # # # _ # # # # " //
+//             # = 0 or 1             // 
+
+// when this register is accessed, it will over write line 11 and/or 12. //
+// by default, name is just the reg name. this is changable.             //
+
+name = reg_d
+prefix = reg_d
+=> 0 0 0 0 _ 0 0 0 0
