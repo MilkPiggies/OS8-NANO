@@ -1,10 +1,43 @@
 ======DONE======
-/circ/microcode.asm
 
-/common/jdh8util.h
-/common/jdh8.h
-/common/util.h
-/common/jdh8util.c
+/circ/
+    /circ/microcode.asm         DONE
+    /circ/jdh8.circ	            DONE
+
+/common/
+    /common/jdh8util.h          DONE
+    /common/jdh8.h              DONE
+    /common/util.h              DONE
+    /common/jdh8util.c          DONE
+
+/test/
+    /test/char.asm              DONE
+    /test/complete.asm          DONE
+    /test/data.asm              DONE
+    /test/esc.asm               DONE
+    /test/eval.asm              DONE    
+    /test/extras.asm            DONE
+    /test/fib.asm               DONE    
+    /test/jump.asm              DONE
+    /test/mem.asm               DONE
+    /test/mw.asm                DONE    
+    /test/ops.asm               DONE    
+    /test/proc.asm              DONE
+    /test/stack.asm             DONE
+    /test/test.c                DONE
+
+/
+
+/
+
+/
+
+/
+
+/
+
+/
+
 
 ======TODO======
 /circ/jdh8.circ					\\ https://raw.githubusercontent.com/jdah/jdh-8/master/circ/jdh8.circ
