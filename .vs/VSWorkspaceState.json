@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cpu",
-    "\\cpu\\JDH8",
+    "\\chess",
     "\\cpu\\JDH8\\asm",
     "\\cpu\\JDH8\\circ",
-    "\\cpu\\JDH8\\common",
-    "\\live"
+    "\\cpu\\JDH8\\common"
   ],
-  "SelectedNode": "\\cpu\\JDH8\\common\\util.h",
+  "SelectedNode": "\\chess",
   "PreviewInSolutionExplorer": false
 }

@@ -42,4 +42,4 @@ puts:
     pop si    
     ret
 
-msg_hello: db 'Hello world from KERNEL! NEW!!!', ENDL, 0
+msg_hello: db 'Hello world from KERNEL!', ENDL, 0

@@ -1,2 +1,5 @@
 
 .vs/OS8-NANO/v17/Browse.VC.opendb
+build/
+*.err
+bx_enh_dbg.ini

@@ -1,0 +1,65 @@
+@ifndef ARCH_ASM
+@define ARCH_ASM
+
+; ARCHITECTURE CONSTANTS
+
+; SPECIAL MEMORY ADDRESSES
+@define ADDR_ROM  0x0000
+@define ADDR_BANK 0x8000
+@define ADDR_RAM  0xC000
+@define ADDR_STACK 0xFEFF
+
+; SPECIAL MEMORY-MAPPED REGISTERS
+@define ADDR_MB  0xFFFA
+
+@define ADDR_SP  0xFFFC
+@define ADDR_SPL 0xFFFC
+@define ADDR_SPH 0xFFFD
+
+@define ADDR_PC  0xFFFC
+@define ADDR_PCL 0xFFFC
+@define ADDR_PCH 0xFFFD
+
+; FLAG INDICES
+@define FLAG_L 0x01
+@define FLAG_E 0x02
+@define FLAG_C 0x03
+@define FLAG_B 0x04
+
+@define FLAG_LESS   FLAG_L
+@define FLAG_EQUAL  FLAG_E
+@define FLAG_CARRY  FLAG_C
+@define FLAG_BORROW FLAG_B
+
+; GFX CONSTANTS
+@define SCANLINE_OFFSET         32
+@define SCANLINE_WIDTH          256
+@define SCREEN_WIDTH            208
+@define SCREEN_HEIGHT           240
+@define SCANLINE_OFFSET_BYTES   (SCANLINE_OFFSET / 8)
+@define SCANLINE_WIDTH_BYTES    (SCANLINE_WIDTH / 8)
+@define SCREEN_WIDTH_BYTES      (SCREEN_WIDTH / 8)
+@define SCREEN_HEIGHT_BYTES     (SCREEN_HEIGHT / 8)
+@define SCREEN_SIZE_BYTES       ((256 / 8) * SCREEN_HEIGHT)
+
+; OS DATA
+@define OSDATA_OFFSET 0xFA00
+
+; TEMPORARY DATA CONSTANTS
+@define TEMP_OFFSET 0xFD00
+
+@define T0 (TEMP_OFFSET + 0)
+@define T1 (TEMP_OFFSET + 1)
+@define T2 (TEMP_OFFSET + 2)
+@define T3 (TEMP_OFFSET + 3)
+@define T4 (TEMP_OFFSET + 4)
+@define T5 (TEMP_OFFSET + 5)
+@define T6 (TEMP_OFFSET + 6)
+@define T7 (TEMP_OFFSET + 7)
+
+@define D0 (TEMP_OFFSET + 0)
+@define D1 (TEMP_OFFSET + 2)
+@define D2 (TEMP_OFFSET + 4)
+@define D3 (TEMP_OFFSET + 6)
+
+@endif

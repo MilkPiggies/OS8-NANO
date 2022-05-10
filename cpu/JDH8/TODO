@@ -13,7 +13,7 @@
 /test/
     /test/char.asm              DONE
     /test/complete.asm          DONE
-    /test/data.asm              DONE
+    /test/data.asm              DONE 
     /test/esc.asm               DONE
     /test/eval.asm              DONE    
     /test/extras.asm            DONE
@@ -26,11 +26,28 @@
     /test/stack.asm             DONE
     /test/test.c                DONE
 
-/
+/syntax/
+    /syntax/jdh8.vim            DONE
 
-/
+/programs/
+    /programs/demo.asm                      DONE
+    /programs/pong.asm                      DONE
+        /programs/holiday/holiday.asm       DONE
+        /programs/holiday/holiday.png       DONE
+        /programs/holiday/image.asm         DONE   
 
-/
+/os/
+    /os/arch.asm                DONE
+    /os/os.asm                  DONE
+    /os/oscall.asm              DONE
+    /os/ostest.asm              DONE    
+    /os/ostext.asm              DONE
+        /os/lib/font.asm        DONE
+        /os/lib/gfx.asm         DONE   
+        /os/lib/math.asm        DONE
+        /os/lib/shift.asm       DONE
+        /os/lib/term.asm        DONE
+        /os/lib/util.asm        DONE
 
 /
 
